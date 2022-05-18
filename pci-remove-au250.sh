@@ -4,7 +4,7 @@ pci_remove() {
     VENDOR=$1
     DEVICE=$2
     PCIEDEVICE=`lspci -d $VENDOR:$DEVICE | sed -e "s/ .*//"`
-    echo "hotplugging device: $PCIEDEVICE"
+    echo "unplugging device: $PCIEDEVICE"
     # remove device, if it exists
     if [ -n "$PCIEDEVICE" ]; then
         sudo sh -c "echo 1 >/sys/bus/pci/devices/0000:$PCIEDEVICE/remove"
