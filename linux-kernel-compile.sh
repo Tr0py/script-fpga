@@ -1,5 +1,10 @@
 # compile linux kernel to .deb package
 
+# copy the current configuration file
+cp /boot/config-$(uname -r) .config
+# customize kernel config (optional)
+make menuconfig
+
 # To solve the key signing issue: comment out the "Certificates for signature
 # checking" options in .config.  Then during the compilation, answer nothing
 # when it asks for keys so that it will generate one for one time use.  Answers
@@ -10,8 +15,6 @@
 # to unbootable image.  If that happens, you should fall back to `deb-pkg`.
 make bindeb-pkg -j 10
 
-
-The output (.deb) will be in the *parent*(../) folder!
 
 # the .confg works looks like:
 # ========================================
@@ -31,3 +34,5 @@ CONFIG_SYSTEM_TRUSTED_KEYS=""
 # If there's Error about pahole such as:
 # BTF: .tmp_vmlinux.btf: pahole (pahole) is not available
 sudo apt install dwarves
+
+The output (.deb) will be in the *parent*(../) folder!
