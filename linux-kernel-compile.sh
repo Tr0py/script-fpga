@@ -11,7 +11,7 @@
 make bindeb-pkg -j 10
 
 
-# The output (.deb) will be on the *parent* folder!
+The output (.deb) will be in the *parent*(../) folder!
 
 # the .confg works looks like:
 # ========================================
@@ -26,3 +26,8 @@ CONFIG_SYSTEM_TRUSTED_KEYS=""
 # CONFIG_SYSTEM_BLACKLIST_KEYRING is not set
 # end of Certificates for signature checking
 # ========================================
+
+
+# If there's Error about pahole such as:
+# BTF: .tmp_vmlinux.btf: pahole (pahole) is not available
+sudo apt install dwarves
